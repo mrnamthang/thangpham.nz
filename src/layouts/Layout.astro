@@ -1,0 +1,105 @@
+---
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/source-serif-4/wght.css';
+import '../styles/global.css';
+import Mark from '../components/Mark.astro';
+import { site } from '../site.config';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+const path = Astro.url.pathname;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en-NZ">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#f7f5f0" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_NZ" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:bg-paper focus:px-4 focus:py-2"
+    >
+      Skip to content
+    </a>
+
+    <header class="mx-auto w-full max-w-5xl px-5 pt-8 sm:px-8 sm:pt-10">
+      <div class="flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
+        <a href="/" class="flex items-center gap-3 text-ink no-underline" aria-label={`${site.name}, home`}>
+          <Mark class="h-7 w-7 text-accent" />
+          <span class="font-serif text-lg font-medium">{site.name}</span>
+        </a>
+        <nav aria-label="Main">
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+            {
+              site.nav.map((item) => {
+                const active = path.startsWith(item.href);
+                return (
+                  <li>
+                    <a
+                      href={item.href}
+                      aria-current={active ? 'page' : undefined}
+                      class:list={[
+                        'no-underline hover:underline',
+                        active ? 'text-ink underline decoration-accent decoration-2' : 'text-muted hover:text-ink',
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-5 sm:px-8">
+      <slot />
+    </main>
+
+    <footer class="mx-auto mt-24 w-full max-w-5xl px-5 pb-10 sm:px-8">
+      <div class="flex flex-col gap-6 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:justify-between">
+        <div class="space-y-1">
+          <p class="text-ink">{site.name} · {site.nativeName}</p>
+          <p>{site.role}. {site.location}</p>
+        </div>
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          <li><a href={`mailto:${site.email}`}>Email</a></li>
+          <li><a href={site.links.upwork} rel="me">Upwork</a></li>
+          <li><a href={site.links.linkedin} rel="me">LinkedIn</a></li>
+          <li><a href={site.links.github} rel="me">GitHub</a></li>
+        </ul>
+      </div>
+      <p class="mt-6 text-xs text-muted">© {year} {site.name}</p>
+    </footer>
+  </body>
+</html>
