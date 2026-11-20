@@ -1,6 +1,7 @@
 ---
 title: "Redesigning an audit log with about 16M rows"
-client: "Workforce management SaaS, NZ"
+client: "RosterIt"
+clientType: "workforce management SaaS, NZ"
 summary: "I redesigned a single audit log table of about 16M rows into three tiers, partitioned by time."
 result: "On staging, the dashboard query went from 89 ms to 11 ms after an index change."
 stack: "Laravel, with time-partitioned tables and cursor pagination."

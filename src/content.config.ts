@@ -37,7 +37,8 @@ const caseStudies = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/case-studies' }),
   schema: z.object({
     title: z.string(),
-    client: z.string(), // client type, shown as a small label
+    client: z.string(), // client name, shown as a small label on the case study page
+    clientType: z.string(), // e.g. "workforce management SaaS, NZ", used in the group heading
     summary: z.string(), // one sentence: what I did
     result: z.string(), // one sentence with a number
     stack: z.string(), // one sentence

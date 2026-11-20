@@ -3,25 +3,40 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   items: CollectionEntry<'caseStudies'>[];
+  // Heading level for each client group; project titles use the next level down.
   headingLevel?: 'h2' | 'h3';
 }
 
 const { items, headingLevel = 'h3' } = Astro.props;
-const Heading = headingLevel;
+const GroupHeading = headingLevel;
+const ItemHeading = headingLevel === 'h2' ? 'h3' : 'h4';
+
+// Group projects by client, keeping the order of the first project for each client.
+const groups = new Map<string, CollectionEntry<'caseStudies'>[]>();
+for (const item of items) {
+  const key = `${item.data.client} — ${item.data.clientType}`;
+  groups.set(key, [...(groups.get(key) ?? []), item]);
+}
 ---
 
-<ul class="space-y-9">
+<div class="space-y-12">
   {
-    items.map((item) => (
-      <li>
-        <p class="label">{item.data.client}</p>
-        <Heading class="mt-1 text-[1.1rem]">
-          <a href={`/case-studies/${item.id}/`}>{item.data.title}</a>
-        </Heading>
-        <p class="mt-2">
-          {item.data.summary} {item.data.result}
-        </p>
-      </li>
+    [...groups].map(([heading, groupItems]) => (
+      <section>
+        <GroupHeading class="label text-[0.8rem]">{heading}</GroupHeading>
+        <ul class="mt-4 space-y-8">
+          {groupItems.map((item) => (
+            <li>
+              <ItemHeading class="text-[1.1rem]">
+                <a href={`/case-studies/${item.id}/`}>{item.data.title}</a>
+              </ItemHeading>
+              <p class="mt-2">
+                {item.data.summary} {item.data.result}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
     ))
   }
-</ul>
+</div>

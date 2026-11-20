@@ -1,6 +1,7 @@
 ---
 title: "Fixing slow screens for RosterIt's largest customers"
-client: "Workforce management SaaS, NZ"
+client: "RosterIt"
+clientType: "workforce management SaaS, NZ"
 summary: "I measured the slowest screens on the largest customers' data and rewrote the queries behind them."
 result: "The roster review screen went from 44 seconds and 10,674 queries to about 2 seconds."
 stack: "Laravel and MySQL."

@@ -3,7 +3,7 @@ title: "Laravel and Vue upgrades"
 order: 1
 ---
 
-I upgrade Laravel, PHP and Vue on a live app, in small steps, with tests written before the risky changes. The old version keeps running until the new one is ready.
+I upgrade Laravel, PHP and Vue on a live app, in small steps, with tests written before the risky changes. I keep the old version running while the new one rolls out.
 
 On RosterIt, that meant Laravel 9 to 12, PHP 8.1 to 8.3, Vue 2 to 3 with Inertia added, and the Nova admin moved to Filament. Customers move to the new app one company at a time.
 
