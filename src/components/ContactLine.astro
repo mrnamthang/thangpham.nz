@@ -1,0 +1,8 @@
+---
+import { site } from '../site.config';
+---
+
+<p>
+  Email me at <a href={`mailto:${site.email}`}>{site.email}</a>. {site.replyTime}{' '}
+  {site.bookingUrl && <>You can also <a href={site.bookingUrl}>book a call</a>.</>}
+</p>

@@ -1,6 +1,6 @@
 ---
-title: "Services | Thang Pham, Laravel & Vue.js Developer"
-description: "Laravel and Vue.js upgrades, rescue and refactor of existing SaaS apps, admin tools and payroll or accounting integrations."
+title: "Services | Thang Pham, Laravel & Vue.js developer"
+description: "Laravel and Vue.js upgrades on live apps, taking over and fixing existing apps, and admin tools and payroll integrations."
 heading: "Services"
-intro: "I work on existing Laravel and Vue.js apps. Most of my clients have a product that works and earns money, but the code has fallen behind or become hard to change."
+intro: "I work on existing Laravel and Vue.js apps: apps that still earn money but have fallen behind or become hard to change."
 ---

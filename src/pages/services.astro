@@ -2,7 +2,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import ContactCta from '../components/ContactCta.astro';
+import ContactLine from '../components/ContactLine.astro';
 
 const page = (await getEntry('pages', 'services'))!.data;
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
@@ -12,28 +12,18 @@ const rendered = await Promise.all(services.map(async (s) => ({ ...s, Content: (
 <Layout title={page.title} description={page.description}>
   <PageHeader heading={page.heading} intro={page.intro} />
 
-  <div class="space-y-20">
-    {
-      rendered.map(({ id, data, Content }, i) => (
-        <section aria-labelledby={id} class="grid gap-6 border-t border-line pt-8 md:grid-cols-[16rem_1fr] md:gap-12">
-          <div>
-            <span class="font-serif text-sm text-accent" aria-hidden="true">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <h2 id={id} class="mt-2 text-2xl font-medium">
-              {data.title}
-            </h2>
-          </div>
-          <div>
-            <p class="text-lg leading-relaxed">{data.summary}</p>
-            <div class="prose mt-6 max-w-none prose-h3:mt-8 prose-h3:text-base prose-h3:font-semibold prose-h3:font-sans">
-              <Content />
-            </div>
-          </div>
-        </section>
-      ))
-    }
-  </div>
+  {
+    rendered.map(({ id, data, Content }) => (
+      <section aria-labelledby={id} class="mt-12">
+        <h2 id={id}>{data.title}</h2>
+        <div class="flow mt-3">
+          <Content />
+        </div>
+      </section>
+    ))
+  }
 
-  <ContactCta />
+  <div class="mt-16 border-t border-line pt-6">
+    <ContactLine />
+  </div>
 </Layout>

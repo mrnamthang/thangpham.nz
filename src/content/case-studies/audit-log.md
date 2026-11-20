@@ -1,26 +1,25 @@
 ---
-title: "An audit log with 100M+ records"
-client: "Workforce management SaaS, New Zealand"
-summary: "Redesigned an audit log with over 100 million records into a partitioned, tiered setup. [TODO: add the result, e.g. query time from X to Y, or storage cut by Z%.]"
-# TODO: add the database (MySQL or PostgreSQL)
-tech: ["Laravel"]
-featured: true
-order: 3
+title: "Redesigning an audit log with about 16M rows"
+client: "Workforce management SaaS, NZ"
+summary: "I redesigned a single audit log table of about 16M rows into three tiers, partitioned by time."
+result: "On staging, the dashboard query went from 89 ms to 11 ms after an index change."
+stack: "Laravel, with time-partitioned tables and cursor pagination."
+order: 4
 ---
 
-## The problem
+## The situation
 
-The app recorded every change in one audit log table. It grew past 100 million records.
-
-[TODO: what went wrong, e.g. slow audit screens, slow backups, high storage cost.]
+Every audit event was in one table: about 16M rows and 4.6 GB, with no tenant column and no partitioning.
 
 ## What I did
 
-- Split the table into partitions [TODO: e.g. by month], so queries only read the data they need.
-- Moved older records to a cheaper storage tier. [TODO: describe the tiers, e.g. recent data in the main database, older data archived to S3.]
-- Moved the existing records across while the app stayed live. [TODO: confirm.]
-- Kept the audit screens working the same way for users.
+- Split events into three tiers by type: critical, operational and activity.
+- Partitioned each tier by time, quarterly or monthly.
+- Put the tenant first in the indexes, and used cursor pagination.
+- Set retention per tier. Pay-related records are kept for 7 years, matching NZ rules for wage and time records.
 
 ## The result
 
-[TODO: add numbers, e.g. query time from X seconds to Y ms, table size from X GB to Y GB.]
+On staging, the dashboard query went from 89 ms to 11 ms after an index change.
+
+The new tables are still small, because companies are still moving over. So there are no production before-and-after times yet.

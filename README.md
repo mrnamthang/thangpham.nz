@@ -4,13 +4,21 @@ Personal portfolio site. Astro + Tailwind, built as static files, hosted on Verc
 
 ## Editing text
 
-- Page text: `src/content/pages/*.md`
-- Services: `src/content/services/*.md` (one file each, `order` sets the order)
-- Case studies: `src/content/case-studies/*.md` (`featured: true` shows it on the home page)
-- Email, Calendly, Formspree ID, links, nav: `src/site.config.ts`
-- About photo: put it in `src/assets/` and set `photo` in `src/content/pages/about.md`
+- Page text: `src/content/pages/*.md` (home page text, including the "Now" line and its date, is in `home.md`)
+- Services: `src/content/services/*.md` (`order` sets the order)
+- Case studies: `src/content/case-studies/*.md` (`summary` and `result` show in the work list; `stack` is one sentence)
+- Email, Calendly, Formspree ID, reply time, links, nav: `src/site.config.ts`
 
-Find all placeholders with `grep -rn TODO src`.
+### About photo
+
+Save it as `src/assets/thang.jpg`, at least 1200 px wide (for example 1200 x 900), under 1 MB. Then add these lines to the top of `src/content/pages/about.md`:
+
+```yaml
+photo: "../../assets/thang.jpg"
+photoAlt: "Thang Pham"
+```
+
+Astro resizes and compresses it at build time.
 
 ## Running locally
 

@@ -4,9 +4,10 @@
 export const site = {
   name: 'Thang Pham',
   nativeName: 'Phạm Nam Thắng',
-  role: 'Laravel & Vue.js Developer',
+  role: 'Laravel & Vue.js developer',
   url: 'https://thangpham.nz',
-  location: 'Based in Vietnam. Working NZ and AU hours.',
+  location: 'Based in Vietnam, working NZ and AU hours.',
+  replyTime: 'I reply within one working day, NZ time.',
 
   // Forwards to Gmail via Porkbun email forwarding.
   email: 'hello@thangpham.nz',
@@ -23,8 +24,8 @@ export const site = {
   },
 
   nav: [
+    { label: 'Work', href: '/case-studies/' },
     { label: 'Services', href: '/services/' },
-    { label: 'Case studies', href: '/case-studies/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
   ],

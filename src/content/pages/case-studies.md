@@ -1,6 +1,6 @@
 ---
-title: "Case studies | Thang Pham, Laravel & Vue.js Developer"
-description: "Selected work on live Laravel and Vue.js apps: large upgrades, payroll integrations, big data tables and platform moves."
-heading: "Case studies"
-intro: "Selected work on live Laravel and Vue.js apps. Client names are left out unless the client has agreed."
+title: "Work | Thang Pham, Laravel & Vue.js developer"
+description: "Recent work on live Laravel and Vue.js apps: a Laravel 9 to 12 and Vue 2 to 3 upgrade, performance fixes, payroll exports and an audit log redesign."
+heading: "Recent work"
+intro: "Projects on live Laravel and Vue.js apps. Each one has the numbers I could check."
 ---

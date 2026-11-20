@@ -1,116 +1,71 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Button from '../components/Button.astro';
 import { site } from '../site.config';
 
-const entry = (await getEntry('pages', 'contact'))!;
-const page = entry.data;
-const { Content } = await render(entry);
+const page = (await getEntry('pages', 'contact'))!.data;
 const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
 const field =
-  'mt-2 block w-full rounded-sm border border-ink/25 bg-white px-3 py-2.5 text-base text-ink focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent';
+  'mt-1 block w-full rounded-none border border-ink/30 bg-white/50 px-3 py-2 text-base text-ink focus:border-moss focus:outline-none focus-visible:outline-2 focus-visible:outline-moss';
 ---
 
 <Layout title={page.title} description={page.description}>
   <PageHeader heading={page.heading} intro={page.intro} />
 
-  <div class="grid gap-16 md:grid-cols-[1fr_18rem]">
-    <div>
-      <form
-        id="contact-form"
-        action={formAction || '#'}
-        method="POST"
-        data-ready={formAction ? 'true' : 'false'}
-        class="max-w-xl space-y-6"
-      >
-        <div>
-          <label for="name" class="text-sm font-medium">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required class={field} />
-        </div>
-        <div>
-          <label for="email" class="text-sm font-medium">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required class={field} />
-        </div>
-        <div>
-          <label for="company" class="text-sm font-medium">
-            Company <span class="font-normal text-muted">(optional)</span>
-          </label>
-          <input id="company" name="company" type="text" autocomplete="organization" class={field} />
-        </div>
-        <div>
-          <label for="message" class="text-sm font-medium">What do you need help with?</label>
-          <textarea id="message" name="message" rows="6" required class={field} />
-        </div>
-        <input type="hidden" name="_subject" value="New message from thangpham.nz" />
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
-        <button
-          type="submit"
-          class="rounded-sm bg-accent px-5 py-3 text-[15px] font-medium text-white hover:bg-accent-dark disabled:opacity-60"
-        >
-          Send message
-        </button>
-        <p id="form-status" role="status" aria-live="polite" class="text-sm"></p>
-      </form>
-
-      <div id="form-success" hidden class="max-w-xl rounded-sm border-l-4 border-accent bg-paper-deep px-6 py-8 sm:px-8">
-        <div class="flex items-start gap-4">
-          <svg class="mt-1 h-7 w-7 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.75"></circle>
-            <path d="M7.5 12.5l3 3 6-6.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <div>
-            <h2 id="form-success-heading" tabindex="-1" class="text-2xl font-medium focus:outline-none">Message sent</h2>
-            <p class="mt-3 leading-relaxed text-ink/85">
-              Thanks for getting in touch. I will reply to <strong id="form-success-email">your email</strong> soon.
-            </p>
-            {
-              site.bookingUrl && (
-                <p class="mt-3 leading-relaxed text-ink/85">
-                  Prefer to talk? <a href={site.bookingUrl}>Book a call</a>.
-                </p>
-              )
-            }
-            <button id="form-again" type="button" class="mt-6 text-sm text-muted underline underline-offset-4 hover:text-ink">
-              Send another message
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <aside class="space-y-8 text-[15px]">
-      <div>
-        <h2 class="font-sans text-sm font-semibold">Email</h2>
-        <p class="mt-2"><a href={`mailto:${site.email}`}>{site.email}</a></p>
-      </div>
-      <div>
-        <h2 class="font-sans text-sm font-semibold">Book a call</h2>
-        {
-          site.bookingUrl ? (
-            <div class="mt-3">
-              <Button href={site.bookingUrl} variant="secondary">Pick a time</Button>
-            </div>
-          ) : (
-            <p class="mt-2 text-muted">[TODO: add your Calendly link in src/site.config.ts.]</p>
-          )
-        }
-      </div>
-      <div>
-        <h2 class="font-sans text-sm font-semibold">Hours</h2>
-        <div class="prose prose-sm mt-2 text-muted"><Content /></div>
-      </div>
-      <div>
-        <h2 class="font-sans text-sm font-semibold">Elsewhere</h2>
-        <ul class="mt-2 space-y-1">
-          <li><a href={site.links.upwork} rel="me">Upwork</a></li>
-          <li><a href={site.links.linkedin} rel="me">LinkedIn</a></li>
-          <li><a href={site.links.github} rel="me">GitHub</a></li>
-        </ul>
-      </div>
-    </aside>
+  <div class="space-y-4">
+    <p>Email me at <a href={`mailto:${site.email}`}>{site.email}</a>. {site.replyTime}</p>
+    {site.bookingUrl && <p>If you'd rather talk, <a href={site.bookingUrl}>book a call on Calendly</a>.</p>}
+    <p>I'm in Vietnam (UTC+7) and work NZ and AU business hours.</p>
   </div>
+
+  {
+    formAction && (
+      <section aria-labelledby="form-heading" class="mt-14">
+        <h2 id="form-heading">Or send a message here</h2>
+
+        <form id="contact-form" action={formAction} method="POST" class="mt-6 space-y-5">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required class={field} />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required class={field} />
+          </div>
+          <div>
+            <label for="company">
+              Company <span class="text-muted">(optional)</span>
+            </label>
+            <input id="company" name="company" type="text" autocomplete="organization" class={field} />
+          </div>
+          <div>
+            <label for="message">What do you need help with?</label>
+            <textarea id="message" name="message" rows="6" required class={field} />
+          </div>
+          <input type="hidden" name="_subject" value="New message from thangpham.nz" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <button type="submit" class="border border-ink bg-ink px-5 py-2 text-paper hover:bg-ink/85 disabled:opacity-60">
+            Send message
+          </button>
+          <p id="form-status" role="status" aria-live="polite" class="text-base"></p>
+        </form>
+
+        <div id="form-success" hidden class="mt-6 border-l-2 border-moss py-2 pl-5">
+          <h3 id="form-success-heading" tabindex="-1" class="text-[1.3rem] focus:outline-none">
+            Thanks, your message was sent.
+          </h3>
+          <p class="mt-2">
+            I will reply to <strong id="form-success-email" class="font-medium">your email</strong> within one working
+            day, NZ time.
+          </p>
+          <p class="mt-4">
+            <a id="form-again" href="#contact-form">Send another message</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
 </Layout>
 
 <script>
@@ -122,21 +77,15 @@ const field =
   const successEmail = document.getElementById('form-success-email');
   const again = document.getElementById('form-again');
 
-  const errorClass = 'rounded-sm border border-red-800/30 bg-red-50 px-4 py-3 text-sm text-red-900';
-
   function showStatus(message: string, isError = false) {
     if (!status) return;
     status.textContent = message;
-    status.className = isError ? errorClass : 'text-sm text-muted';
+    status.className = isError ? 'border-l-2 border-red-800 pl-4 text-base text-red-900' : 'text-base text-muted';
   }
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const button = form.querySelector('button');
-    if (form.dataset.ready !== 'true') {
-      showStatus('The form is not connected yet. Please email me instead.', true);
-      return;
-    }
     if (button) button.disabled = true;
     showStatus('Sending...');
 
@@ -155,7 +104,6 @@ const field =
       form.hidden = true;
       if (success) success.hidden = false;
       successHeading?.focus();
-      success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch {
       showStatus('Sorry, the message could not be sent. Please email me instead.', true);
     } finally {
@@ -163,7 +111,8 @@ const field =
     }
   });
 
-  again?.addEventListener('click', () => {
+  again?.addEventListener('click', (event) => {
+    event.preventDefault();
     if (success) success.hidden = true;
     if (form) {
       form.hidden = false;

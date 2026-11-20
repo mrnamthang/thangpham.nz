@@ -2,8 +2,8 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import CaseStudyList from '../../components/CaseStudyList.astro';
-import ContactCta from '../../components/ContactCta.astro';
+import WorkList from '../../components/WorkList.astro';
+import ContactLine from '../../components/ContactLine.astro';
 
 const page = (await getEntry('pages', 'case-studies'))!.data;
 const items = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
@@ -11,6 +11,11 @@ const items = (await getCollection('caseStudies')).sort((a, b) => a.data.order -
 
 <Layout title={page.title} description={page.description}>
   <PageHeader heading={page.heading} intro={page.intro} />
-  <CaseStudyList items={items} headingLevel="h2" />
-  <ContactCta />
+  <div class="mt-4">
+    <WorkList items={items} headingLevel="h2" />
+  </div>
+  <p class="mt-12">For earlier projects, see the <a href="/about/">About</a> page.</p>
+  <div class="mt-12 border-t border-line pt-6">
+    <ContactLine />
+  </div>
 </Layout>
