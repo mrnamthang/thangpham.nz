@@ -11,8 +11,7 @@ export const site = {
   // Forwards to Gmail via Porkbun email forwarding.
   email: 'hello@thangpham.nz',
 
-  // TODO: paste your Calendly link, e.g. https://calendly.com/your-name/30min
-  bookingUrl: '',
+  bookingUrl: 'https://calendly.com/thangpham21/30min',
 
   // Formspree form "thangpham.nz contact", sends to hello@thangpham.nz.
   formspreeId: 'mnpdzeqz',
