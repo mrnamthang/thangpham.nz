@@ -8,14 +8,14 @@ export const site = {
   url: 'https://thangpham.nz',
   location: 'Based in Vietnam. Working NZ and AU hours.',
 
-  // TODO: set up this mailbox before going live.
+  // Forwards to Gmail via Porkbun email forwarding.
   email: 'hello@thangpham.nz',
 
   // TODO: paste your Calendly link, e.g. https://calendly.com/your-name/30min
   bookingUrl: '',
 
-  // TODO: create a form at formspree.io and paste its ID (the part after /f/).
-  formspreeId: '',
+  // Formspree form "thangpham.nz contact", sends to hello@thangpham.nz.
+  formspreeId: 'mnpdzeqz',
 
   links: {
     upwork: 'https://www.upwork.com/freelancers/~01f580487fd162c402',
