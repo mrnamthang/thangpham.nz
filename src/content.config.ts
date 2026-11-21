@@ -5,8 +5,7 @@ import { z } from 'astro/zod';
 // Page-level text: home, services, case studies index, about, contact, 404.
 const pages = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/pages' }),
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
       title: z.string(), // <title> tag and og:title
       description: z.string(), // meta description and og:description
       heading: z.string(), // h1 on the page
@@ -19,9 +18,6 @@ const pages = defineCollection({
       example: z.string().optional(),
       now: z.string().optional(),
       nowDate: z.string().optional(), // when the "Now" line was written, e.g. "Nov 2026"
-      // About page only
-      photo: image().optional(),
-      photoAlt: z.string().optional(),
     }),
 });
 

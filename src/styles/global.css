@@ -115,6 +115,14 @@
     color: var(--color-muted);
   }
 
+  .flow img {
+    width: 100%;
+    max-width: 28rem;
+    height: auto;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
   .flow blockquote {
     font-style: italic;
   }

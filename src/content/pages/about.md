@@ -2,13 +2,13 @@
 title: "About | Thang Pham, Laravel & Vue.js developer"
 description: "Freelance Laravel and Vue.js developer with 10 years of experience. Lived and worked in New Zealand from 2021 to 2025, now based in Vietnam on NZ and AU hours."
 heading: "About"
-photo: "../../assets/thang.jpg"
-photoAlt: "Thang Pham holding a fishing rod on Parapara Beach, Golden Bay, with hills and low cloud behind."
 ---
 
 I'm Thang Pham (Phạm Nam Thắng). I have built web apps with Laravel and Vue.js for 10 years, since April 2016.
 
 I lived and worked in New Zealand from 2021 to 2025, the last two years in Golden Bay. Now I'm based in Vietnam. I still work NZ and AU hours, and I'm open to moving back to NZ.
+
+![Thang Pham holding a fishing rod on Parapara Beach, Golden Bay, with hills and low cloud behind.](../../assets/thang.jpg)
 
 ## How I work
 
