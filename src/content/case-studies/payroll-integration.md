@@ -2,7 +2,7 @@
 title: "Payroll exports for TechOne, iPayroll and Xero"
 client: "RosterIt"
 clientType: "workforce management SaaS, NZ"
-summary: "I built and fixed the exports that send RosterIt timesheets to payroll, including a TechOne export used by an NZ city council."
+summary: "I built and fixed the exports that send RosterIt timesheets to payroll, including a TechOne export used by an NZ city council, and rebuilt the Xero NZ Payroll sync."
 result: "Over the last 12 months, the TechOne and iPayroll exports covered about 450 employees across about 10 companies."
 stack: "Laravel, with exports for TechOne and iPayroll and the Xero NZ Payroll API."
 order: 3

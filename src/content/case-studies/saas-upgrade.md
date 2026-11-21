@@ -2,8 +2,8 @@
 title: "Upgrading RosterIt from Laravel 9 to 12 and Vue 2 to 3"
 client: "RosterIt"
 clientType: "workforce management SaaS, NZ"
-summary: "I was the only developer on RosterIt's upgrade. I took a ~100k-line app from Laravel 9 to 12 and Vue 2 to 3, and moved the front end to Vue 3 + Inertia."
-result: "The app went from 2 tests to about 3,500 PHP tests, plus about 1,150 front-end tests."
+summary: "I was the only developer on the upgrade of a ~100k-line app, and moved its front end to Vue 3 and Inertia."
+result: "Tests went from 2 to about 3,500 PHP tests, plus about 1,150 front-end tests."
 stack: "Laravel 12, PHP 8.3, Vue 3, Inertia, Filament and MySQL."
 order: 1
 ---

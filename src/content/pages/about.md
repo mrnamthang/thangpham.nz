@@ -24,7 +24,7 @@ I use AI coding tools every day. They help me read large codebases and work fast
 
 ## Track record
 
-- 2016 to 2021: agencies and a product studio in Ho Chi Minh City, building apps for clients in Vietnam, the US and Europe.
+- 2016 to 2021: agencies and a product studio in Ho Chi Minh City, building apps for clients in Vietnam, the US and Europe, including Truckster and TractorZoom (US startups), Moveek.com, and campaign apps for Samsung and Unilever.
 - 2021 to 2024: full-stack developer at MHP Digital, an NZ agency.
 - Since December 2024: freelance, on Upwork (100% Job Success) and with direct clients.
 - Bachelor of Engineering in Software Engineering, VNU-HCM University of Information Technology.
@@ -36,7 +36,6 @@ I use AI coding tools every day. They help me read large codebases and work fast
 - **Freshagenda** (via MHP Digital / CompanyBrew, NZ): features, security fixes from Snyk scans, and a data insights module.
 - **Bestseat360.tv:** an admin dashboard for a live streaming product, built with Laravel, PostgreSQL, Vue.js and AWS. Delivered ahead of schedule.
 - **Career Central:** a student career platform used in NZ, Australia and South Africa.
-- **Earlier, in Ho Chi Minh City:** Truckster and TractorZoom (US startups), Moveek.com, and campaign apps for Samsung and Unilever.
 
 ## Outside work
 
