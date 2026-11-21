@@ -10,16 +10,32 @@ const page = entry.data;
 const { Content } = await render(entry);
 ---
 
-<Layout title={page.title} description={page.description}>
-  <PageHeader heading={page.heading} intro={page.intro} />
-
-  {page.photo && <Image src={page.photo} alt={page.photoAlt ?? ''} width={720} loading="eager" class="mb-10 h-auto w-full max-w-[22rem]" />}
-
-  <div class="flow">
-    <Content />
+<Layout title={page.title} description={page.description} wide={Boolean(page.photo)}>
+  <div class="measure">
+    <PageHeader heading={page.heading} intro={page.intro} />
   </div>
 
-  <div class="mt-16 border-t border-line pt-6">
-    <ContactLine />
+  {/* Photo above the text on small screens, beside it on wide screens. */}
+  <div class="xl:grid xl:grid-cols-[minmax(0,64ch)_15rem] xl:items-start xl:gap-12">
+    {
+      page.photo && (
+        <Image
+          src={page.photo}
+          alt={page.photoAlt ?? ''}
+          width={720}
+          loading="eager"
+          class="mb-10 h-auto w-full max-w-[22rem] xl:order-last xl:mb-0 xl:mt-1.5"
+        />
+      )
+    }
+    <div class="measure">
+      <div class="flow">
+        <Content />
+      </div>
+
+      <div class="mt-16 border-t border-line pt-6">
+        <ContactLine />
+      </div>
+    </div>
   </div>
 </Layout>
