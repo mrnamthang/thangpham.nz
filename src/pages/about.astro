@@ -13,7 +13,7 @@ const { Content } = await render(entry);
 <Layout title={page.title} description={page.description}>
   <PageHeader heading={page.heading} intro={page.intro} />
 
-  {page.photo && <Image src={page.photo} alt={page.photoAlt ?? ''} width={1200} class="mb-8 h-auto w-full" />}
+  {page.photo && <Image src={page.photo} alt={page.photoAlt ?? ''} width={720} loading="eager" class="mb-10 h-auto w-full max-w-[22rem]" />}
 
   <div class="flow">
     <Content />
