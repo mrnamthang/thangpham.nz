@@ -7,7 +7,7 @@ import { site } from '../site.config';
 const page = (await getEntry('pages', 'contact'))!.data;
 const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
 const field =
-  'mt-1 block w-full rounded-none border border-ink/30 bg-white/50 px-3 py-2 text-base text-ink focus:border-moss focus:outline-none focus-visible:outline-2 focus-visible:outline-moss';
+  'mt-1 block w-full rounded-none border border-ink/30 bg-white px-3 py-2 text-base text-ink focus:border-moss focus:outline-none focus-visible:outline-2 focus-visible:outline-moss';
 ---
 
 <Layout title={page.title} description={page.description}>
