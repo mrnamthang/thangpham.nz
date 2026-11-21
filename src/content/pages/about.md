@@ -33,7 +33,7 @@ I use AI coding tools every day. They help me read large codebases and work fast
 
 - **DzynSpace:** moved a legacy Laravel app from AWS to Vercel with Neon (PostgreSQL).
 - **Handover:** a property management platform. Ongoing retainer, including a redesign of the guest and host views.
-- **Freshagenda** (via MHP Digital / CompanyBrew, NZ): features, security fixes from Snyk scans, and a data insights module.
+- **Freshagenda and CompanyBrew** (NZ, through MHP Digital): features, security fixes from Snyk scans, and a data insights module.
 - **Bestseat360.tv:** an admin dashboard for a live streaming product, built with Laravel, PostgreSQL, Vue.js and AWS. Delivered ahead of schedule.
 - **Career Central:** a student career platform used in NZ, Australia and South Africa.
 
